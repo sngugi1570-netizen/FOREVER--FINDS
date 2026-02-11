@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customize Your Furniture | Forever Finds</title>
+
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body>
+
+  <div id="header"></div>
+
+  <main class="section">
+    <div class="container">
+
+      <div class="section-header">
+        <h1>Customize Your Furniture</h1>
+        <p>
+          Tell us exactly what you need. We’ll craft it to your preference
+          and send you a personalized quote.
+        </p>
+      </div>
+
+      <form id="customForm" class="custom-form">
+
+        <!-- PREFILLED PRODUCT (FROM HOMEPAGE) -->
+        <div class="form-group full prefill-box" id="prefillContainer" style="display:none;">
+          <label>Selected Design</label>
+          <p><strong id="productDisplay"></strong></p>
+          <input type="hidden" id="productName">
+        </div>
+
+        <!-- PRODUCT TYPE -->
+        <div class="form-group">
+          <label>Product Type</label>
+          <select id="productType" required>
+            <option value="">Select</option>
+            <option value="Couch">Couch</option>
+            <option value="Bed">Bed</option>
+          </select>
+        </div>
+
+        <!-- SIZE -->
+        <div class="form-group">
+          <label>Size / Configuration</label>
+          <select id="size" required>
+  <option value="">Select</option>
+
+  <!-- Couch Sizes -->
+  <option value="2 Seater" data-type="Couch">2 Seater</option>
+  <option value="3 Seater" data-type="Couch">3 Seater</option>
+  <option value="4 Seater" data-type="Couch">4 Seater</option>
+  <option value="5 Seater" data-type="Couch">5 Seater</option>
+  <option value="6 Seater" data-type="Couch">6 Seater</option>
+  <option value="7 Seater" data-type="Couch">7 Seater</option>
+  <option value="8 Seater" data-type="Couch">8 Seater</option>
+  <option value="9 Seater" data-type="Couch">9 Seater</option>
+
+  <!-- Bed Sizes -->
+  <option value="3x6" data-type="Bed">3x6</option>
+  <option value="4x6" data-type="Bed">4x6</option>
+  <option value="5x6" data-type="Bed">5x6</option>
+  <option value="6x6" data-type="Bed">6x6</option>
+  <option value="Queen Size" data-type="Bed">Queen Size</option>
+  <option value="King Size" data-type="Bed">King Size</option>
+</select>
+
+
+        <!-- FABRIC -->
+        <div class="form-group">
+          <label>Fabric Type</label>
+          <select id="fabric" required>
+            <option value="">Select</option>
+            <option value="Velvet">Velvet</option>
+            <option value="Linen">Linen</option>
+            <option value="Leather">Leather</option>
+            <option value="Suede">Suede</option>
+          </select>
+        </div>
+
+        <!-- CUSHION -->
+        <div class="form-group">
+          <label>Cushion Comfort</label>
+          <select id="cushion" required>
+            <option value="">Select</option>
+            <option value="Soft">Soft</option>
+            <option value="Medium">Medium</option>
+            <option value="Firm">Firm</option>
+          </select>
+        </div>
+
+        <!-- COLOR -->
+        <div class="form-group">
+          <label>Preferred Color</label>
+          <input type="text" id="color" placeholder="e.g. Beige, Taupe, Charcoal" required />
+        </div>
+
+        <!-- NOTES -->
+        <div class="form-group full">
+          <label>Additional Notes</label>
+          <textarea id="notes" rows="4" placeholder="Room size, storage needs, inspiration, etc."></textarea>
+        </div>
+
+        <!-- CTA -->
+        <button type="submit" class="btn-primary full">
+          Send Custom Request via WhatsApp
+        </button>
+
+      </form>
+
+    </div>
+  </main>
+
+  <div id="footer"></div>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+
+    // ===============================
+    // PREFILL PRODUCT FROM URL
+    // ===============================
+   const params = new URLSearchParams(window.location.search);
+const product = params.get("product");
+
+if (product) {
+  document.getElementById("productDisplay").textContent = product;
+  document.getElementById("productName").value = product;
+  document.getElementById("prefillContainer").style.display = "block";
+
+  // AUTO-SELECT PRODUCT TYPE
+  const productTypeSelect = document.getElementById("productType");
+  const lowerProduct = product.toLowerCase();
+
+  if (
+    lowerProduct.includes("couch") ||
+    lowerProduct.includes("seater") ||
+    lowerProduct.includes("sectional")
+  ) {
+    productTypeSelect.value = "Couch";
+  }
+
+  if (lowerProduct.includes("bed")) {
+    productTypeSelect.value = "Bed";
+  }
+
+  productTypeSelect.disabled = true;
+}
+// ===============================
+// DYNAMIC SIZE FILTERING
+// ===============================
+function filterSizes(selectedType) {
+  const sizeSelect = document.getElementById("size");
+  const options = sizeSelect.querySelectorAll("option");
+
+  options.forEach(option => {
+    const type = option.getAttribute("data-type");
+
+    // Skip default option
+    if (!type) {
+      option.style.display = "block";
+      return;
+    }
+
+    // If nothing selected → show all
+    if (selectedType === "") {
+      option.style.display = "block";
+      return;
+    }
+
+    // Show only matching type
+    option.style.display = (type === selectedType) ? "block" : "none";
+  });
+
+  sizeSelect.value = "";
+}
+
+const productTypeSelect = document.getElementById("productType");
+
+productTypeSelect.addEventListener("change", function() {
+  filterSizes(this.value);
+});
+
+// Run on page load (important for prefill auto-select)
+filterSizes(productTypeSelect.value);
+
+    // ===============================
+    // WHATSAPP SUBMIT LOGIC
+    // ===============================
+    const form = document.getElementById("customForm");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const selectedProduct = document.getElementById("productName").value || "Custom Furniture Request";
+      const productType = document.getElementById("productType").value;
+      const size = document.getElementById("size").value;
+      const fabric = document.getElementById("fabric").value;
+      const cushion = document.getElementById("cushion").value;
+      const color = document.getElementById("color").value;
+      const notes = document.getElementById("notes").value;
+
+      const message = `
+*New Custom Furniture Request*
+
+Design: ${selectedProduct}
+Product Type: ${productType}
+Size: ${size}
+Fabric: ${fabric}
+Cushion Comfort: ${cushion}
+Color: ${color}
+Notes: ${notes}
+`;
+
+      // ⚠️ REPLACE WITH YOUR REAL WHATSAPP NUMBER
+      const phone = "254718189714";
+
+      const url = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
+
+      window.open(url, "_blank");
+    });
+
+  });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bubble Seat | Forever Finds</title>
+  <link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+
+<body>
+
+  <div id="header"></div>
+
+  <main class="section">
+    <div class="container product-layout">
+
+      <!-- ================= LEFT: GALLERY ================= -->
+      <div class="gallery">
+
+        <!-- COLOR SELECTOR -->
+        <div class="color-selector">
+          <span class="color-label">Select Color:</span>
+
+          <div class="color-options">
+            <button class="color-btn active" data-color="black" style="background:#111;"></button>
+            <button class="color-btn" data-color="olive-green" style="background:#21c251;"></button>
+            <button class="color-btn" data-color="off-white" style="background:#f5f5f5;"></button>
+            <button class="color-btn" data-color="burnt-orange" style="background:#c45a2c;"></button>
+          </div>
+        </div>
+
+        <!-- MAIN IMAGE -->
+        <div class="main-image" id="zoomTrigger">
+          <img id="currentImage"
+               src="../assets/images/couches/bubble-seat/black/1.jpg"
+               alt="Bubble Seat">
+        </div>
+
+        <!-- VERTICAL THUMBNAILS -->
+        <div class="thumbs-vertical" id="thumbnailContainer"></div>
+
+      </div>
+
+      <!-- ================= RIGHT: PRODUCT INFO ================= -->
+      <div class="product-info">
+        <h1>Bubble Seat</h1>
+        <p class="product-description">
+          A sculptural statement piece designed for modern luxury interiors.
+          Fully customizable in fabric, comfort, and finish.
+        </p>
+
+        <a href="../customize.html?product=Bubble%20Seat"
+           class="btn-primary">
+           Customize This Design
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FULLSCREEN MODAL -->
+  <div class="image-modal" id="imageModal">
+    <span class="close-modal">&times;</span>
+    <img class="modal-content" id="modalImage">
+  </div>
+
+  <div id="footer"></div>
+
+  <script src="../assets/js/main.js"></script>
+
+  <!-- ================= GALLERY SCRIPT ================= -->
+  <script>
+    const mainImage = document.getElementById("currentImage");
+    const thumbnailContainer = document.getElementById("thumbnailContainer");
+    const colorButtons = document.querySelectorAll(".color-btn");
+
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    const closeModal = document.querySelector(".close-modal");
+
+    let currentColor = "black";
+    const totalImages = 4;
+    let autoSlideIndex = 0;
+    let autoSlideInterval;
+
+    function loadGallery(color) {
+      thumbnailContainer.innerHTML = "";
+      autoSlideIndex = 0;
+
+      for (let i = 1; i <= totalImages; i++) {
+
+        const imgPath = `../assets/images/couches/bubble-seat/${color}/${i}.jpg`;
+
+        const thumb = document.createElement("img");
+        thumb.src = imgPath;
+        thumb.classList.add("thumb");
+
+        if (i === 1) {
+          thumb.classList.add("active");
+          mainImage.src = imgPath;
+        }
+
+        thumb.addEventListener("click", () => {
+
+          document.querySelectorAll(".thumb").forEach(t => t.classList.remove("active"));
+          thumb.classList.add("active");
+
+          mainImage.style.opacity = "0";
+
+          setTimeout(() => {
+            mainImage.src = imgPath;
+            mainImage.style.opacity = "1";
+          }, 200);
+
+          autoSlideIndex = i - 1;
+        });
+
+        thumbnailContainer.appendChild(thumb);
+      }
+
+      startAutoSlide();
+    }
+
+    /* COLOR SWITCH */
+    colorButtons.forEach(button => {
+      button.addEventListener("click", () => {
+
+        document.querySelectorAll(".color-btn").forEach(b => b.classList.remove("active"));
+        button.classList.add("active");
+
+        currentColor = button.dataset.color;
+        loadGallery(currentColor);
+      });
+    });
+
+    /* AUTO SLIDESHOW */
+    function startAutoSlide() {
+      clearInterval(autoSlideInterval);
+
+      autoSlideInterval = setInterval(() => {
+        const thumbs = document.querySelectorAll(".thumb");
+        autoSlideIndex = (autoSlideIndex + 1) % thumbs.length;
+        thumbs[autoSlideIndex].click();
+      }, 4000);
+    }
+
+    mainImage.addEventListener("mouseenter", () => {
+      clearInterval(autoSlideInterval);
+    });
+
+    mainImage.addEventListener("mouseleave", () => {
+      startAutoSlide();
+    });
+
+    /* FULLSCREEN ZOOM */
+    mainImage.addEventListener("click", () => {
+      modal.style.display = "flex";
+      modalImg.src = mainImage.src;
+    });
+
+    closeModal.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+
+    loadGallery(currentColor);
+  </script>
+
+</body>
+</html>
