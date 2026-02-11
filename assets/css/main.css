@@ -1181,3 +1181,204 @@ body {
   }
 
 }
+/* =====================================
+   HERO — TRUE MOBILE FIX
+===================================== */
+
+@media (max-width: 768px) {
+
+  .hero-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .hero-text {
+    width: 100%;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+    line-height: 1.2;
+  }
+
+  .hero p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .hero-video,
+  .hero-image {
+    width: 100%;
+  }
+
+  .hero-video video,
+  .hero-image img {
+    width: 100%;
+    height: auto;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .hero-actions a {
+    width: 100%;
+    text-align: center;
+  }
+
+}
+@media (max-width: 768px) {
+  .hero {
+    padding: 100px 0 60px;
+  }
+}
+/* ===== HEADER BASE ===== */
+
+.site-header {
+  background: #0b0b0b;
+  padding: 20px 0;
+  position: relative;
+  z-index: 1000;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.main-nav {
+  display: flex;
+  gap: 30px;
+}
+
+.main-nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.main-nav a:hover {
+  color: #d4af37;
+}
+/* ===== MOBILE MENU ===== */
+.mobile-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+
+  .mobile-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+  }
+
+  .mobile-toggle span {
+    width: 26px;
+    height: 2px;
+    background: #d4af37;
+    transition: 0.3s ease;
+  }
+
+  .main-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 75%;
+    height: 100vh;
+    background: #0b0b0b;
+    flex-direction: column;
+    padding: 120px 40px;
+    gap: 30px;
+    transition: 0.4s ease;
+  }
+
+  .main-nav.active {
+    right: 0;
+  }
+}
+/* ========================================= */
+/* ===== PREMIUM MOBILE MENU STYLING ====== */
+/* ========================================= */
+
+@media (max-width: 992px) {
+
+  .main-nav {
+    position: fixed;
+    top: 80px;
+    right: 0;
+    width: 100%;
+    background: rgba(15,15,16,0.95);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0;
+    gap: 1.5rem;
+
+    transform: translateY(-20px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s ease;
+    border-bottom: 1px solid rgba(212,175,55,0.15);
+  }
+
+  .main-nav.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Menu Links */
+  .main-nav a {
+    font-size: 1.1rem;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 1px;
+    color: var(--text-main);
+    padding: 0.6rem 1.2rem;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  /* Gold underline animation */
+  .main-nav a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0%;
+    height: 1px;
+    background: var(--accent);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+
+  .main-nav a:hover {
+    color: var(--accent);
+  }
+
+  .main-nav a:hover::after {
+    width: 60%;
+  }
+
+  /* CTA Button (Visit Showroom) */
+  .main-nav .nav-cta {
+    margin-top: 1rem;
+    border: 1px solid var(--accent);
+    border-radius: 30px;
+    padding: 0.8rem 2rem;
+    transition: all 0.3s ease;
+  }
+
+  .main-nav .nav-cta:hover {
+    background: var(--accent);
+    color: #000;
+  }
+
+}
