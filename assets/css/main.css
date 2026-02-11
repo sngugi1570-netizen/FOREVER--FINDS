@@ -1100,3 +1100,84 @@ body {
   color: #111;
   transform: translateY(-5px);
 }
+/* ===================================
+   GLOBAL MOBILE OPTIMIZATION
+=================================== */
+
+@media (max-width: 768px) {
+
+  /* Better page breathing room */
+  body {
+    overflow-x: hidden;
+  }
+
+  .container {
+    width: 92%;
+    margin: 0 auto;
+  }
+
+  /* Header spacing */
+  .header-inner {
+    padding: 15px 0;
+  }
+
+  /* Navigation fix */
+  .main-nav {
+    display: none; /* hides desktop nav */
+  }
+
+  /* Hero section */
+  .hero {
+    padding: 120px 0 80px;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+    line-height: 1.2;
+  }
+
+  .hero p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* Buttons stack */
+  .hero-buttons,
+  .cta-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .btn-primary,
+  .btn-outline {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Section spacing */
+  .section {
+    padding: 60px 0;
+  }
+
+  /* Grid stacking */
+  .footer-grid,
+  .featured-product,
+  .category-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  /* Footer spacing */
+  .footer-grid {
+    text-align: center;
+  }
+
+  /* WhatsApp button spacing */
+  .whatsapp-float {
+    right: 20px;
+    bottom: 20px;
+  }
+
+}
