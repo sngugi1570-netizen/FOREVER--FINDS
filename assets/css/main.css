@@ -1382,3 +1382,19 @@ body {
   }
 
 }
+/* FEATURED COLLECTION IMAGE FIX */
+.product-img {
+  height: 260px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 14px;
+}
+
+.product-card {
+  text-align: center;
+}
+
+.product-card h4 {
+  margin-top: 15px;
+  font-family: 'Playfair Display', serif;
+}
