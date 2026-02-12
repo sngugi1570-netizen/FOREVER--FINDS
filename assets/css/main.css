@@ -1500,3 +1500,57 @@ body {
   color: #000;
   box-shadow: 0 10px 30px rgba(212,175,55,0.4);
 }
+/* =========================
+   HEADER CLEAN STRUCTURE
+========================= */
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Action Buttons */
+.header-actions {
+  display: flex;
+  gap: 14px;
+}
+
+/* Mobile Fix */
+@media (max-width: 992px) {
+
+  .header-actions {
+    display: none;
+  }
+
+  .main-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 75%;
+    height: 100vh;
+    background: #111;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 120px 30px;
+    gap: 30px;
+    transition: 0.4s ease;
+  }
+
+  .main-nav.active {
+    right: 0;
+  }
+
+  .mobile-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
+
+  .mobile-toggle span {
+    width: 25px;
+    height: 2px;
+    background: #fff;
+  }
+}
