@@ -79,49 +79,91 @@
 
     <div class="products-grid">
 
-      <!-- L-SHAPED -->
-      <div class="product-card">
-        <div class="product-img"
-             style="background-image: url('assets/images/signature-pieces/l-shaped/1.jpg');">
-        </div>
-        <h4>L-Shape Couch Section</h4>
-        <a href="customize.html?product=L-Shape%20Couch%20Section"
-           class="text-link">Customize this piece</a>
-      </div>
+  <!-- BUBBLE SEAT -->
+  <div class="product-card">
+  <img src="assets/images/signature-pieces/bubble-seat/1.jpg"
+       class="product-img"
+       onclick="openImage(this.src)">
 
-      <!-- MODERN 3 SEATER -->
-      <div class="product-card">
-        <div class="product-img"
-             style="background-image: url('assets/images/signature-pieces/modern3-seater-couch/1.jpg');">
-        </div>
-        <h4>Modern 3-Seater Couch</h4>
-        <a href="customize.html?product=Modern%203-Seater%20Couch"
-           class="text-link">Customize this piece</a>
-      </div>
+  <h4>Bubble Seat Couch</h4>
 
-      <!-- SINGLE SEAT -->
-      <div class="product-card">
-        <div class="product-img"
-             style="background-image: url('assets/images/signature-pieces/single-seat/1.jpg');">
-        </div>
-        <h4>Single Seat</h4>
-        <a href="customize.html?product=Single%20Seat"
-           class="text-link">Customize this piece</a>
-      </div>
+  <a href="customize.html?product=Bubble%20Seat%20Couch"
+     class="text-link">Customize this piece</a>
+</div>
 
-      <!-- U-SHAPED -->
-      <div class="product-card">
-        <div class="product-img"
-             style="background-image: url('assets/images/signature-pieces/U-shaped/1.jpg');">
-        </div>
-        <h4>U-Shaped Sectional</h4>
-        <a href="customize.html?product=U-Shaped%20Sectional"
-           class="text-link">Customize this piece</a>
-      </div>
+  <!-- CHESTERFIELD -->
+ <div class="product-card">
+  <img src="assets/images/signature-pieces/chesterfield/1.jpg"
+       class="product-img"
+       onclick="openImage(this.src)">
 
-    </div>
-  </div>
-</section>
+  <h4>Chesterfield Classic</h4>
+
+  <a href="customize.html?product=Chesterfield%20Classic"
+     class="text-link">Customize this piece</a>
+</div>
+
+
+  <!-- MODERN CURVED LUXE -->
+<div class="product-card">
+  <img src="assets/images/signature-pieces/modern-curved-luxe/1.jpg"
+       class="product-img"
+       onclick="openImage(this.src)">
+
+  <h4>Modern Curved Luxe</h4>
+
+  <a href="customize.html?product=Modern%20Curved%20Luxe"
+     class="text-link">Customize this piece</a>
+</div>
+
+
+  <!-- SCULPTED MINIMALIST -->
+  <div class="product-card">
+  <img src="assets/images/signature-pieces/sculpted-minimalist/1.jpg"
+       class="product-img"
+       onclick="openImage(this.src)">
+
+  <h4>Sculpted Minimalist</h4>
+
+  <a href="customize.html?product=Sculpted%20Minimalist"
+     class="text-link">Customize this piece</a>
+</div>
+
+
+  <!-- LUXURY PANEL BED -->
+<div class="product-card">
+  <img src="assets/images/signature-pieces/luxury-panel-bed/1.jpg"
+       class="product-img"
+       onclick="openImage(this.src)">
+
+  <h4>Luxury Panel Bed</h4>
+
+  <a href="customize.html?product=Luxury%20Panel%20Bed"
+     class="text-link">Customize this piece</a>
+</div>
+
+
+  <!-- UPHOLSTERED WING BED -->
+ <div class="product-card">
+  <img src="assets/images/signature-pieces/upholstered-wing-bed/1.jpg"
+       class="product-img"
+       onclick="openImage(this.src)">
+
+  <h4>Upholstered Wing Bed</h4>
+
+  <a href="customize.html?product=Upholstered%20Wing%20Bed"
+     class="text-link">Customize this piece</a>
+</div>
+
+
+</div>
+
+    </div> <!-- END products-grid -->
+  </div>   <!-- END container -->
+</section> <!-- END Signature Section -->
+
+
+
 
 
   <!-- WHY FOREVER FINDS -->
@@ -177,6 +219,29 @@
    target="_blank">
    WhatsApp
 </a>
+<script>
+function openImage(src) {
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImage");
+
+  modal.style.display = "flex";
+  modalImg.src = src;
+}
+
+function closeImage() {
+  document.getElementById("imageModal").style.display = "none";
+}
+</script>
+
+
+
+<div id="imageModal" class="image-modal" onclick="closeImage()">
+  <span class="close-btn">&times;</span>
+  <img id="modalImage" class="modal-content">
+</div>
+
 
 </body>
+</html>
+
 </html>
