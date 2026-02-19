@@ -1,0 +1,23 @@
+{
+  "name": "forever-finds-furniture",
+  "version": "1.0.0",
+  "description": "Forever Finds Furniture e-commerce website",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "keywords": [
+    "furniture",
+    "e-commerce"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@jest/globals": "^29.7.0",
+    "fast-check": "^3.15.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "jsdom": "^28.1.0"
+  }
+}
