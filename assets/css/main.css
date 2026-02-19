@@ -1830,3 +1830,175 @@ body {
     color: white;
     cursor: pointer;
 }
+
+/* ========================================= */
+/* ===== BACK BUTTON STYLING ============== */
+/* ========================================= */
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 2rem;
+  padding: 0.7rem 1.5rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border-soft);
+  border-radius: 8px;
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background: rgba(212,175,55,0.1);
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateX(-5px);
+}
+
+.back-button i {
+  font-size: 1rem;
+}
+
+/* ========================================= */
+/* ===== PRODUCT PAGE MOBILE FIX ========== */
+/* ========================================= */
+
+@media (max-width: 900px) {
+  
+  /* Product Layout Stack */
+  .product-layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  /* Gallery Adjustments */
+  .gallery {
+    flex-direction: column;
+  }
+
+  .main-image {
+    height: 400px;
+  }
+
+  /* Thumbnails Horizontal on Mobile */
+  .thumbs-vertical {
+    flex-direction: row;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+
+  .thumb {
+    min-width: 80px;
+    height: 80px;
+  }
+
+  /* Color Selector Mobile */
+  .color-selector {
+    margin-bottom: 1.5rem;
+  }
+
+  .color-options {
+    justify-content: flex-start;
+  }
+
+  /* Product Info */
+  .product-info h1 {
+    font-size: 1.8rem;
+  }
+
+  .product-description {
+    font-size: 0.95rem;
+  }
+
+  /* Product Specs */
+  .product-specs {
+    margin-bottom: 1.5rem;
+  }
+
+  .product-specs ul {
+    font-size: 0.9rem;
+  }
+
+  /* Buttons Full Width */
+  .btn-primary,
+  .btn-outline {
+    width: 100%;
+    text-align: center;
+  }
+
+  .product-actions {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .product-actions a {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Back Button Mobile */
+  .back-button {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* ========================================= */
+/* ===== SIGNATURE PIECES MOBILE FIX ====== */
+/* ========================================= */
+
+@media (max-width: 900px) {
+  
+  /* Products Grid - 2 columns on tablet, 1 on mobile */
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  
+  /* Products Grid - 1 column on small mobile */
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  /* Product Card Adjustments */
+  .product-card {
+    padding: 1.5rem;
+  }
+
+  .product-img img {
+    height: 200px;
+  }
+
+  .product-card h4 {
+    font-size: 1.1rem;
+  }
+
+  .product-meta {
+    font-size: 0.85rem;
+  }
+}
+
+/* ========================================= */
+/* ===== PAGE HEADER MOBILE FIX =========== */
+/* ========================================= */
+
+@media (max-width: 768px) {
+  
+  .page-header {
+    padding: 3rem 0 2rem;
+  }
+
+  .page-header h1 {
+    font-size: 2rem;
+  }
+
+  .page-header p {
+    font-size: 0.95rem;
+  }
+}
