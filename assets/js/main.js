@@ -230,25 +230,7 @@ document.addEventListener("mousemove", (e) => {
 });
 
 // ===============================
-// PAGE TRANSITION
+// PAGE TRANSITION - DISABLED TO FIX BLACK SCREEN ISSUE
 // ===============================
-const transition = document.createElement("div");
-transition.classList.add("page-transition");
-document.body.appendChild(transition);
+// Removed page transition that was causing black screen on mobile back button
 
-document.addEventListener("click", function (e) {
-  const link = e.target.closest("a");
-
-  if (!link) return;
-  if (link.hostname !== window.location.hostname) return;
-
-  const href = link.getAttribute("href");
-  if (!href || href.startsWith("#")) return;
-
-  e.preventDefault();
-  transition.classList.add("active");
-
-  setTimeout(() => {
-    window.location.href = href;
-  }, 500);
-});
