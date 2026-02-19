@@ -10,6 +10,12 @@ async function loadPartial(targetId, filePath) {
     if (target) target.innerHTML = html;
   } catch (error) {
     console.error(`Error loading ${filePath}:`, error);
+    // Hide loader even if partials fail to load
+    const loader = document.getElementById("luxuryLoader");
+    if (loader) {
+      loader.style.opacity = "0";
+      loader.style.visibility = "hidden";
+    }
   }
 }
 
@@ -22,10 +28,29 @@ function initMobileMenu() {
 
   if (!mobileToggle || !mainNav) return;
 
+  // Create overlay
+  let overlay = document.querySelector('.mobile-menu-overlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.classList.add('mobile-menu-overlay');
+    document.body.appendChild(overlay);
+  }
+
+  // Toggle menu
   mobileToggle.addEventListener("click", (e) => {
     e.stopPropagation();
-    mainNav.classList.toggle("active");
+    const isActive = mainNav.classList.toggle("active");
     mobileToggle.classList.toggle("active");
+    overlay.classList.toggle("active");
+    document.body.classList.toggle("menu-open");
+  });
+
+  // Close when clicking overlay
+  overlay.addEventListener("click", () => {
+    mainNav.classList.remove("active");
+    mobileToggle.classList.remove("active");
+    overlay.classList.remove("active");
+    document.body.classList.remove("menu-open");
   });
 
   // Close when clicking a nav link
@@ -33,6 +58,8 @@ function initMobileMenu() {
     link.addEventListener("click", () => {
       mainNav.classList.remove("active");
       mobileToggle.classList.remove("active");
+      overlay.classList.remove("active");
+      document.body.classList.remove("menu-open");
     });
   });
 
@@ -41,6 +68,8 @@ function initMobileMenu() {
     if (!mainNav.contains(e.target) && !mobileToggle.contains(e.target)) {
       mainNav.classList.remove("active");
       mobileToggle.classList.remove("active");
+      overlay.classList.remove("active");
+      document.body.classList.remove("menu-open");
     }
   });
 
@@ -49,6 +78,8 @@ function initMobileMenu() {
     if (window.innerWidth > 992) {
       mainNav.classList.remove("active");
       mobileToggle.classList.remove("active");
+      overlay.classList.remove("active");
+      document.body.classList.remove("menu-open");
     }
   });
 }
@@ -216,6 +247,16 @@ window.addEventListener("load", () => {
     loader.style.visibility = "hidden";
   }
 });
+
+// Fallback: Force hide loader after 3 seconds if it's still visible
+setTimeout(() => {
+  const loader = document.getElementById("luxuryLoader");
+  if (loader && loader.style.opacity !== "0") {
+    loader.style.opacity = "0";
+    loader.style.visibility = "hidden";
+  }
+}, 3000);
+
 
 // ===============================
 // CURSOR GLOW

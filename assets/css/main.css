@@ -1535,6 +1535,8 @@ body {
     padding: 120px 30px;
     gap: 30px;
     transition: 0.4s ease;
+    z-index: 9998;
+    overflow-y: auto;
   }
 
   .main-nav.active {
@@ -1546,6 +1548,8 @@ body {
     flex-direction: column;
     gap: 5px;
     cursor: pointer;
+    z-index: 9999;
+    position: relative;
   }
 
   .mobile-toggle span {
@@ -2000,5 +2004,43 @@ body {
 
   .page-header p {
     font-size: 0.95rem;
+  }
+}
+
+/* ========================================= */
+/* ===== MOBILE MENU OVERLAY ============== */
+/* ========================================= */
+
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 9997;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Prevent body scroll when mobile menu is open */
+body.menu-open {
+  overflow: hidden;
+}
+
+@media (max-width: 992px) {
+  /* Ensure main content is not blocked */
+  main {
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Ensure header is above main content */
+  .site-header {
+    position: relative;
+    z-index: 1000;
   }
 }
