@@ -378,9 +378,14 @@ button.full {
 @media (max-width: 900px) {
   .hero-grid,
   .steps-grid,
-  .products-grid,
   .why-grid {
     grid-template-columns: 1fr;
+  }
+  
+  /* Products Grid - 2 columns on tablet */
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
   }
 }
 
@@ -392,6 +397,29 @@ button.full {
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+  
+  /* Products Grid - 1 column on mobile phones */
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  /* Product Card Mobile Adjustments */
+  .product-card {
+    padding: 1.5rem;
+  }
+
+  .product-img img {
+    height: 200px;
+  }
+
+  .product-card h4 {
+    font-size: 1.1rem;
+  }
+
+  .product-meta {
+    font-size: 0.85rem;
   }
 }
 /* ================================================= */
@@ -1950,43 +1978,10 @@ body {
 }
 
 /* ========================================= */
-/* ===== SIGNATURE PIECES MOBILE FIX ====== */
+/* ===== SIGNATURE PIECES MOBILE - REMOVED DUPLICATE ====== */
 /* ========================================= */
+/* This section was consolidated into the main responsive section above */
 
-@media (max-width: 900px) {
-  
-  /* Products Grid - 2 columns on tablet, 1 on mobile */
-  .products-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-}
-
-@media (max-width: 600px) {
-  
-  /* Products Grid - 1 column on small mobile */
-  .products-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  /* Product Card Adjustments */
-  .product-card {
-    padding: 1.5rem;
-  }
-
-  .product-img img {
-    height: 200px;
-  }
-
-  .product-card h4 {
-    font-size: 1.1rem;
-  }
-
-  .product-meta {
-    font-size: 0.85rem;
-  }
-}
 
 /* ========================================= */
 /* ===== PAGE HEADER MOBILE FIX =========== */
