@@ -36,6 +36,10 @@ function initMobileMenu() {
     document.body.appendChild(overlay);
   }
 
+  // Ensure overlay starts hidden
+  overlay.classList.remove('active');
+  document.body.classList.remove('menu-open');
+
   // Toggle menu
   mobileToggle.addEventListener("click", (e) => {
     e.stopPropagation();
